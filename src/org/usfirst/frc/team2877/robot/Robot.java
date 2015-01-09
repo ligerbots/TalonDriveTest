@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 	//public static RobtoDrive drive; //drives using a patented Rob-to method
 
     Command autonomousCommand;
-    Command DriveCmd;
+    Command driveCmd;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
-        DriveCmd = new DriveCmd();
+        driveCmd = new DriveCmd();
     }
 	
 	public void disabledPeriodic() {
@@ -58,13 +58,14 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        driveCmd.start();
     }
 
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
-    public void disabledInit(){
+    public void disabledInit() {
 
     }
 
